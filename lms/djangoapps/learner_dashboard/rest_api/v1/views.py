@@ -3,7 +3,6 @@ import json
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
 from django.http import Http404
 
 from openedx.core.djangoapps.programs.models import ProgramsApiConfig
@@ -19,7 +18,6 @@ def _reformat_progress(progress_list):
     simplified_progress = {}
     for progress in progress_list:
         uuid = progress.get('uuid', None)
-        print('UUID ' + uuid)
         if uuid:
             simplified_progress[uuid] = {
                 'completed': progress.get('completed', ''),
