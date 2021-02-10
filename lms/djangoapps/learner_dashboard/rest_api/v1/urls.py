@@ -2,8 +2,7 @@
 URLs for the V1 of the Learner Dashboard API.
 """
 
-from rest_framework.routers import DefaultRouter
-from .views import ProgramListView
+from .views import ProgramDetailView, ProgramListView
 from django.conf.urls import url
 
 app_name = 'v1'
@@ -12,5 +11,10 @@ urlpatterns = [
         r'^programs/$',
         ProgramListView.as_view(),
         name='program_listing'
+    ),
+    url(
+        r'^programs/(?P<program_uuid>[0-9a-f-]+)/$',
+        ProgramDetailView.as_view(),
+        name='program_details'
     ),
 ]
